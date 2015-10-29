@@ -10,6 +10,4 @@ import Foundation
 
 class OTMConstants {
     
-    let facebookAppId = 365362206864879
-    
 }

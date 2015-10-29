@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
         // passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         
+        //@TODO: sort the rest of this later.
         let fbLoginButton = FBSDKLoginButton()
         fbLoginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height - 50)
         view.addSubview(fbLoginButton)
@@ -34,7 +35,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpButton(sender: UIButton) {
-        // open the sign up page url
+        
+        // open the udacity sign up page url
+        let urlString = "https://www.google.com/url?q=https://www.udacity.com/account/auth%23!/signin&sa=D&usg=AFQjCNHOjlXo3QS15TqT0Bp_TKoR9Dvypw"
+        UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
+        
     }
 
     override func didReceiveMemoryWarning() {
