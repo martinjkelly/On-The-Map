@@ -8,20 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D85D1BE2AAF40018634A /* AppDelegate.swift */; };
-		F367D8601BE2AAF40018634A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D85F1BE2AAF40018634A /* ViewController.swift */; };
+		F367D8601BE2AAF40018634A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D85F1BE2AAF40018634A /* LoginViewController.swift */; };
 		F367D8631BE2AAF40018634A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F367D8611BE2AAF40018634A /* Main.storyboard */; };
 		F367D8651BE2AAF40018634A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F367D8641BE2AAF40018634A /* Assets.xcassets */; };
 		F367D8681BE2AAF40018634A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F367D8661BE2AAF40018634A /* LaunchScreen.storyboard */; };
+		F367D8741BE2AD740018634A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8731BE2AD740018634A /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F367D8761BE2ADA10018634A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8751BE2ADA10018634A /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F367D87A1BE2B7460018634A /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8791BE2B1070018634A /* Roboto-Thin.ttf */; settings = {ASSET_TAGS = (); }; };
+		F367D87B1BE2B7490018634A /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8781BE2B1070018634A /* Roboto-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
+		F367D87C1BE2B74E0018634A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8771BE2B1070018634A /* Roboto-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
+		F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8861BE2D1760018634A /* OTMConstants.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F367D85A1BE2AAF40018634A /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F367D85D1BE2AAF40018634A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F367D85F1BE2AAF40018634A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F367D85F1BE2AAF40018634A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F367D8621BE2AAF40018634A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F367D8641BE2AAF40018634A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F367D8671BE2AAF40018634A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F367D8691BE2AAF50018634A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F367D8731BE2AD740018634A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F367D8751BE2ADA10018634A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		F367D8771BE2B1070018634A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F367D8781BE2B1070018634A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F367D8791BE2B1070018634A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F367D8851BE2CF5A0018634A /* FBBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBBridgeHeader.h; sourceTree = "<group>"; };
+		F367D8861BE2D1760018634A /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */,
+				F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,14 +73,55 @@
 		F367D85C1BE2AAF40018634A /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
-				F367D85D1BE2AAF40018634A /* AppDelegate.swift */,
-				F367D85F1BE2AAF40018634A /* ViewController.swift */,
-				F367D8611BE2AAF40018634A /* Main.storyboard */,
+				F367D8721BE2AB2E0018634A /* Model */,
+				F367D86F1BE2AB030018634A /* Supporting Files */,
+				F367D8711BE2AB250018634A /* View */,
+				F367D8701BE2AB100018634A /* Storyboards */,
 				F367D8641BE2AAF40018634A /* Assets.xcassets */,
-				F367D8661BE2AAF40018634A /* LaunchScreen.storyboard */,
-				F367D8691BE2AAF50018634A /* Info.plist */,
 			);
 			path = "On The Map";
+			sourceTree = "<group>";
+		};
+		F367D86F1BE2AB030018634A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F367D85D1BE2AAF40018634A /* AppDelegate.swift */,
+				F367D8771BE2B1070018634A /* Roboto-Medium.ttf */,
+				F367D8781BE2B1070018634A /* Roboto-Regular.ttf */,
+				F367D8791BE2B1070018634A /* Roboto-Thin.ttf */,
+				F367D8691BE2AAF50018634A /* Info.plist */,
+				F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */,
+				F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */,
+				F367D8851BE2CF5A0018634A /* FBBridgeHeader.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F367D8701BE2AB100018634A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F367D8611BE2AAF40018634A /* Main.storyboard */,
+				F367D8661BE2AAF40018634A /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		F367D8711BE2AB250018634A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F367D85F1BE2AAF40018634A /* LoginViewController.swift */,
+				F367D8731BE2AD740018634A /* MapViewController.swift */,
+				F367D8751BE2ADA10018634A /* TableViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F367D8721BE2AB2E0018634A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F367D8861BE2D1760018634A /* OTMConstants.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +181,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F367D87A1BE2B7460018634A /* Roboto-Thin.ttf in Resources */,
 				F367D8681BE2AAF40018634A /* LaunchScreen.storyboard in Resources */,
+				F367D87C1BE2B74E0018634A /* Roboto-Medium.ttf in Resources */,
+				F367D87B1BE2B7490018634A /* Roboto-Regular.ttf in Resources */,
 				F367D8651BE2AAF40018634A /* Assets.xcassets in Resources */,
 				F367D8631BE2AAF40018634A /* Main.storyboard in Resources */,
 			);
@@ -134,8 +197,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F367D8601BE2AAF40018634A /* ViewController.swift in Sources */,
+				F367D8601BE2AAF40018634A /* LoginViewController.swift in Sources */,
+				F367D8741BE2AD740018634A /* MapViewController.swift in Sources */,
 				F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */,
+				F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */,
+				F367D8761BE2ADA10018634A /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,10 +312,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinjkelly.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "On The Map/FBBridgeHeader.h";
 			};
 			name = Debug;
 		};
@@ -257,10 +330,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
+				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinjkelly.On-The-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "On The Map/FBBridgeHeader.h";
 			};
 			name = Release;
 		};
