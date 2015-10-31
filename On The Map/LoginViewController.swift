@@ -32,6 +32,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(sender: UIButton) {
     
+        let client = OTMClient.sharedInstance()
+        client.fetch("https://www.google.com/url?q=https://s3.amazonaws.com/content.udacity-data.com/courses/ud421/post-session.json&sa=D&usg=AFQjCNFh9XsagB24v3KWIHTD14tOqnJIIQ", parameters: [String:AnyObject]()) { (result:Result) in
+            
+            print(result)
+        }
+        /**
         let urlString = "https://www.udacity.com/api/session"
         let url = NSURL(string: urlString)
         
@@ -46,8 +52,7 @@ class LoginViewController: UIViewController {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
         }
-        
-        task.resume()
+        task.resume()*/
     }
     
     @IBAction func signUpButton(sender: UIButton) {

@@ -8,6 +8,9 @@
 
 import Foundation
 
-class OTMConstants {
+extension OTMClient {
     
+    struct UdacityAPI {
+        static let AuthorizationUrl = "https://www.udacity.com/api/session"
+    }
 }

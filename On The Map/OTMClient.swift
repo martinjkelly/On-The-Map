@@ -45,6 +45,24 @@ class OTMClient: NSObject {
                 return
             }
             
+            guard let statusCode = (response as NSURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let response = NSHTTPURLResponse {
+                    completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "Request error invalid status code: \(response.statusCode)"])))
+                } else if let response = response {
+                    completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "Request error invalid response: \(response)"])))
+                } else {
+                    completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "Request error"])))
+                }
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
+                return
+            }
+            
+            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            
         }
         
         task.resume()
