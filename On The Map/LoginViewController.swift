@@ -32,6 +32,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(sender: UIButton) {
     
+        let urlString = "https://www.udacity.com/api/session"
+        let url = NSURL(string: urlString)
+        
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(usernameField.text)\", \"\(passwordField.text)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+        }
+        
+        task.resume()
     }
     
     @IBAction func signUpButton(sender: UIButton) {

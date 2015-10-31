@@ -20,6 +20,7 @@
 		F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8861BE2D1760018634A /* OTMConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38582971BE4CE3B00D41DFA /* OTMClient.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F367D8851BE2CF5A0018634A /* FBBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBBridgeHeader.h; sourceTree = "<group>"; };
 		F367D8861BE2D1760018634A /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		F38582971BE4CE3B00D41DFA /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */,
 				F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */,
+				F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F367D8861BE2D1760018634A /* OTMConstants.swift */,
+				F38582971BE4CE3B00D41DFA /* OTMClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F367D8601BE2AAF40018634A /* LoginViewController.swift in Sources */,
+				F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */,
 				F367D8741BE2AD740018634A /* MapViewController.swift in Sources */,
 				F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */,
 				F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */,
@@ -317,6 +321,9 @@
 					"$(PROJECT_DIR)/On",
 					The,
 					Map,
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
 				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -332,6 +339,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
 					"$(PROJECT_DIR)/On",
 					The,
 					Map,
@@ -363,6 +373,7 @@
 				F367D86E1BE2AAF50018634A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
