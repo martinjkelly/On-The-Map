@@ -31,28 +31,27 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(sender: UIButton) {
+        
+        if (usernameField.text!.isEmpty || passwordField.text!.isEmpty) {
+            loginFailed("Missing credentials", reason: "Please enter your username and password to login")
+            return
+        }
+        
+        let parameters = ["udacity": ["username": usernameField.text!, "password": passwordField.text!]]
     
         let client = OTMClient.sharedInstance()
-        client.fetch("https://www.google.com/url?q=https://s3.amazonaws.com/content.udacity-data.com/courses/ud421/post-session.json&sa=D&usg=AFQjCNFh9XsagB24v3KWIHTD14tOqnJIIQ", parameters: [String:AnyObject]()) { (result:Result) in
+        client.send(OTMClient.UdacityAPI.AuthorizationUrl, parameters: parameters) { (result:OTMClient.Result) in
             
             print(result)
         }
-        /**
-        let urlString = "https://www.udacity.com/api/session"
-        let url = NSURL(string: urlString)
-        
-        let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(usernameField.text)\", \"\(passwordField.text)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let session = NSURLSession.sharedSession()
-        
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            
-        }
-        task.resume()*/
+    }
+    
+    func loginFailed(title:String, reason:String) {
+        let alertView = UIAlertController(title: title, message: reason, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        presentViewController(alertView, animated: true, completion: nil)
     }
     
     @IBAction func signUpButton(sender: UIButton) {

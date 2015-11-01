@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F34149841BE573D400E231EE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */; };
+		F34149851BE573D600E231EE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */; };
+		F34149871BE592D500E231EE /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34149861BE592D500E231EE /* UdacityClient.swift */; };
 		F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D85D1BE2AAF40018634A /* AppDelegate.swift */; };
 		F367D8601BE2AAF40018634A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D85F1BE2AAF40018634A /* LoginViewController.swift */; };
 		F367D8631BE2AAF40018634A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F367D8611BE2AAF40018634A /* Main.storyboard */; };
@@ -17,13 +20,12 @@
 		F367D87A1BE2B7460018634A /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8791BE2B1070018634A /* Roboto-Thin.ttf */; };
 		F367D87B1BE2B7490018634A /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8781BE2B1070018634A /* Roboto-Regular.ttf */; };
 		F367D87C1BE2B74E0018634A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8771BE2B1070018634A /* Roboto-Medium.ttf */; };
-		F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */; };
-		F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */; };
 		F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8861BE2D1760018634A /* OTMConstants.swift */; };
 		F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38582971BE4CE3B00D41DFA /* OTMClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F34149861BE592D500E231EE /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		F367D85A1BE2AAF40018634A /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F367D85D1BE2AAF40018634A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F367D85F1BE2AAF40018634A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -36,8 +38,8 @@
 		F367D8771BE2B1070018634A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		F367D8781BE2B1070018634A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F367D8791BE2B1070018634A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F367D8811BE2C15B0018634A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "On The Map/FBSDKLoginKit.framework"; sourceTree = SOURCE_ROOT; };
+		F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "On The Map/FBSDKCoreKit.framework"; sourceTree = SOURCE_ROOT; };
 		F367D8851BE2CF5A0018634A /* FBBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBBridgeHeader.h; sourceTree = "<group>"; };
 		F367D8861BE2D1760018634A /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
 		F38582971BE4CE3B00D41DFA /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
@@ -48,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F367D8841BE2CF350018634A /* FBSDKCoreKit.framework in Frameworks */,
-				F367D8821BE2C15B0018634A /* FBSDKLoginKit.framework in Frameworks */,
+				F34149841BE573D400E231EE /* FBSDKCoreKit.framework in Frameworks */,
+				F34149851BE573D600E231EE /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +125,7 @@
 			children = (
 				F367D8861BE2D1760018634A /* OTMConstants.swift */,
 				F38582971BE4CE3B00D41DFA /* OTMClient.swift */,
+				F34149861BE592D500E231EE /* UdacityClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				F367D8741BE2AD740018634A /* MapViewController.swift in Sources */,
 				F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */,
 				F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */,
+				F34149871BE592D500E231EE /* UdacityClient.swift in Sources */,
 				F367D8761BE2ADA10018634A /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +331,9 @@
 					"$(PROJECT_DIR)/On",
 					The,
 					Map,
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
 				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -345,6 +352,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					The,
+					Map,
 					"$(PROJECT_DIR)/On",
 					The,
 					Map,
