@@ -19,15 +19,27 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // fix the placeholder text color.
-        //usernameField.attributedPlaceholder = NSAttributedString(string: usernameField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-        // passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        usernameField.attributedPlaceholder = NSAttributedString(string: usernameField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
         
-        //@TODO: sort the rest of this later.
+        // @TODO: sort the rest of this later.
         let fbLoginButton = FBSDKLoginButton()
         fbLoginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height - 50)
         view.addSubview(fbLoginButton)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let usernamePaddingView = UIView(frame: CGRectMake(0,0,015,usernameField.frame.height))
+        usernameField.leftView = usernamePaddingView
+        usernameField.leftViewMode = .Always
+        
+        let passwordPaddingView = UIView(frame: CGRectMake(0,0,015,usernameField.frame.height))
+        passwordField.leftView = passwordPaddingView
+        passwordField.leftViewMode = .Always
+    
     }
     
     @IBAction func loginButton(sender: UIButton) {

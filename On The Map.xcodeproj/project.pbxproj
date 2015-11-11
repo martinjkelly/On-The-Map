@@ -325,15 +325,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
+					"$(PROJECT_DIR)/On\\ The\\ Map",
 				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -352,15 +344,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
-					"$(PROJECT_DIR)/On",
-					The,
-					Map,
+					"$(PROJECT_DIR)/On\\ The\\ Map",
 				);
 				INFOPLIST_FILE = "On The Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
