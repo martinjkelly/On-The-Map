@@ -49,12 +49,9 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let parameters = ["udacity": ["username": usernameField.text!, "password": passwordField.text!]]
-    
-        let client = OTMClient.sharedInstance()
-        client.send(OTMClient.UdacityAPI.AuthorizationUrl, parameters: parameters) { (result:OTMClient.Result) in
-            
-            print(result)
+        let udacityClient = UdacityClient.sharedInstance()
+        udacityClient.login(usernameField.text!, password: passwordField.text!) { (success) in
+            print("Did you login? = \(success)")
         }
     }
     

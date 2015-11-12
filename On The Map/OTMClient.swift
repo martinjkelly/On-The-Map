@@ -61,8 +61,6 @@ class OTMClient: NSObject {
                 return
             }
             
-            print(response)
-            
             OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
