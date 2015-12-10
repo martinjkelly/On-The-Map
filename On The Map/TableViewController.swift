@@ -40,7 +40,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        print("selected row at indexPath: \(indexPath)")
     }
     
 }

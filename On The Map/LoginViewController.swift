@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
         usernameField.attributedPlaceholder = NSAttributedString(string: usernameField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
-        
         // @TODO: sort the rest of this later.
         let fbLoginButton = FBSDKLoginButton()
         fbLoginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height - 50)
@@ -70,12 +69,6 @@ class LoginViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
