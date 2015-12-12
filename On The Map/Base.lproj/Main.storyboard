@@ -234,7 +234,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JQ6-me-CyL">
             <objects>
-                <tabBarController id="m0A-lI-Vek" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m0A-lI-Vek" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mq2-kd-PLC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
