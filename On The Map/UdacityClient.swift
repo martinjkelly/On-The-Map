@@ -11,7 +11,7 @@ import Foundation
 class UdacityClient: OTMClient {
     
     var userId:Int?
-    var sessionId:Int?
+    var sessionId:String?
     
     override class func sharedInstance() -> UdacityClient {
         
@@ -35,7 +35,12 @@ class UdacityClient: OTMClient {
                 completionHandler(success: false)
                 break
             case .Success(let res):
-                print(res!["account"])
+                let account = res!["account"] as? [String:AnyObject]
+                let session = res!["session"] as? [String:AnyObject]
+                
+                self.userId = Int(account!["key"] as! String)
+                self.sessionId = session!["id"] as? String
+                
                 completionHandler(success: true)
                 break
             }
