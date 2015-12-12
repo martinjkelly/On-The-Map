@@ -70,6 +70,50 @@ class OTMClient: NSObject {
         return task
     }
     
+    func delete(urlString:String, headers: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionTask {
+        
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "DELETE"
+        
+        for (key,value) in headers {
+            request.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            guard (error == nil) else {
+                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(error)"])))
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let response = response as? NSHTTPURLResponse {
+                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                } else if let response = response {
+                    print("Your request returned an invalid response! Response: \(response)!")
+                } else {
+                    print("Your request returned an invalid response!")
+                }
+                return
+            }
+            
+            guard var data = data else {
+                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
+                return
+            }
+            
+            if url!.host == "www.udacity.com" {
+                data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            }
+            
+            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+
+        }
+        
+        task.resume()
+        return task
+    }
+    
     func send(urlString:String, parameters: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
         
         let url = NSURL(string: urlString)

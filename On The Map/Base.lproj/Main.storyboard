@@ -18,7 +18,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -216,10 +216,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="vdu-eP-imn">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zFl-ff-7nX"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="zFl-ff-7nX">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="ezV-Od-6GF" id="3eu-ve-BLK"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="WrM-ZB-abv"/>
-                            <barButtonItem image="pin" id="sZi-bL-uxz"/>
+                            <barButtonItem systemItem="refresh" id="WrM-ZB-abv">
+                                <connections>
+                                    <action selector="reloadDataButtonPressed:" destination="ezV-Od-6GF" id="vLi-99-oPv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="sZi-bL-uxz">
+                                <connections>
+                                    <action selector="addPinButtonPressed:" destination="ezV-Od-6GF" id="Wa4-SI-Vnk"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

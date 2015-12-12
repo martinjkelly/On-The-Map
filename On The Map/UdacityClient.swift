@@ -47,5 +47,32 @@ class UdacityClient: OTMClient {
         }
     }
     
-    
+    func logout(completionHandler:(success:Bool) -> Void) {
+        
+        var xsrfCookie: NSHTTPCookie? = nil
+        var headers = [String:AnyObject]()
+        
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            headers["X-XSRF-TOKEN"] = xsrfCookie.value
+        }
+        
+        let client = OTMClient.sharedInstance()
+        client.delete(OTMClient.UdacityAPI.AuthorizationUrl, headers: headers) { (result:OTMClient.Result) in
+            switch result {
+            case .Failure(let error):
+                print("logout failed with error: \(error)")
+                completionHandler(success: false)
+                break
+            case .Success(let res):
+                print("logout success, retuned: \(res)")
+                completionHandler(success: true)
+                break
+            }
+        }
+    }
 }
