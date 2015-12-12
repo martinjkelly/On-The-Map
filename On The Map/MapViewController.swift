@@ -13,10 +13,17 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var studentLocations = [StudentLocation]()
+    var parseClient:ParseClient?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a
         
+        parseClient = ParseClient.sharedInstance()
+        parseClient?.getStudents() { (success:Bool, locations:[StudentLocation]?) in
+            print("StudentLocationsResult", success, locations)
+        }
     }
     
     @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {

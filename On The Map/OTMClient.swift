@@ -33,10 +33,16 @@ class OTMClient: NSObject {
         return Singleton.sharedInstance
     }
     
-    func fetch(urlString:String, parameters: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
+    func fetch(urlString:String, parameters: [String:AnyObject], headers: [String:AnyObject]?, completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
         
         let url = NSURL(string: urlString + OTMClient.escapedParameters(parameters))
         let request = NSMutableURLRequest(URL: url!)
+        
+        if let headers = headers {
+            for (key,value) in headers {
+                request.setValue(value as? String, forHTTPHeaderField: key)
+            }
+        }
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
         
@@ -70,13 +76,13 @@ class OTMClient: NSObject {
         return task
     }
     
-    func delete(urlString:String, headers: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionTask {
+    func delete(urlString:String, parameters: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionTask {
         
         let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "DELETE"
         
-        for (key,value) in headers {
+        for (key,value) in parameters {
             request.setValue(value as? String, forHTTPHeaderField: key)
         }
         

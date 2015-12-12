@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
         
         let udacityClient = UdacityClient.sharedInstance()
         udacityClient.login(usernameField.text!, password: passwordField.text!) { (success) in
-            print("Did you login? = \(success)")
             
             dispatch_async(dispatch_get_main_queue()) {
                 let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
