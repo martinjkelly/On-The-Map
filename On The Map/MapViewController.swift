@@ -9,11 +9,10 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var studentLocations = [StudentLocation]()
     var parseClient:ParseClient?
     
     override func viewDidLoad() {
@@ -22,7 +21,10 @@ class MapViewController: UIViewController {
         
         parseClient = ParseClient.sharedInstance()
         parseClient?.getStudents() { (success:Bool, locations:[StudentLocation]?) in
-            print("StudentLocationsResult", success, locations)
+            if (success) {
+                print(locations!.count)
+                self.mapView.addAnnotations(locations!)
+            }
         }
     }
     
@@ -40,9 +42,11 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func addPinButtonPressed(sender: UIBarButtonItem) {
+        
     }
     
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
+        
     }
     
     

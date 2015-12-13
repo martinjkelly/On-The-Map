@@ -39,10 +39,8 @@ class ParseClient: OTMClient
                 completionHandler(success: false, students: nil)
                 break
             case .Success(let res):
-                // print("res = \(res)")
-                
                 if let json = res!["results"] as? [[String:AnyObject]] {
-                    print("parsing student locations was a success.")
+                    print("parsing student locations was a success. \(json)")
                     completionHandler(success: true, students: self.parseStudentLocations(json))
                 } else {
                     print("parsing student locations falied.")
@@ -60,18 +58,19 @@ class ParseClient: OTMClient
         var locations = [StudentLocation]()
         
         for location in json {
-            let studentLocation = StudentLocation(
-                objectId: location["objectId"] as! String,
-                uniqueKey: location["uniqueKey"] as? String,
-                firstName: location["firstName"] as! String,
-                lastName: location["lastName"] as! String,
-                mapString: location["mapString"] as! String,
-                mediaUrl: NSURL(string: location["mediaUrl"] as! String)!,
-                latitude: Float(location["latitude"] as! Float),
-                longitude: Float(location["longitude"] as! Float),
-                createdAt: nil,
-                updatedAt: nil
-            )
+            let studentLocation = StudentLocation()
+            studentLocation.objectId = location["objectId"] as! String
+            studentLocation.uniqueKey = location["uniqueKey"] as! String
+            studentLocation.firstName = location["firstName"] as! String
+            studentLocation.lastName = location["lastName"] as! String
+            studentLocation.mapString = location["mapString"] as! String
+            if let mediaUrl = location["mediaURL"] as? String {
+                studentLocation.mediaUrl = NSURL(string: mediaUrl)
+            } else {
+                print(location["mediaURL"])
+            }
+            studentLocation.latitude = location["latitude"] as! Double
+            studentLocation.longitude = location["longitude"] as! Double
             
             locations.append(studentLocation)
         }

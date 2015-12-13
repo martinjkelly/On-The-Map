@@ -7,17 +7,34 @@
 //
 
 import Foundation
+import MapKit
 
-struct StudentLocation
+class StudentLocation: NSObject, MKAnnotation
 {
-    var objectId:String;
-    var uniqueKey:String?;
-    var firstName:String;
-    var lastName:String;
-    var mapString:String;
-    var mediaUrl:NSURL;
-    var latitude:Float;
-    var longitude:Float;
-    var createdAt:NSDate?;
-    var updatedAt:NSDate?;
+    var objectId = ""
+    var uniqueKey = ""
+    var firstName = ""
+    var lastName = ""
+    var mapString = ""
+    var mediaUrl:NSURL?
+    var latitude = 0.0
+    var longitude = 0.0
+    
+    @objc var coordinate: CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+        }
+    }
+    
+    var title:String? {
+        get {
+            return "\(self.firstName) \(self.lastName)"
+        }
+    }
+    
+    var subtitle:String? {
+        get {
+            return "\(self.mediaUrl)"
+        }
+    }
 }
