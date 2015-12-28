@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m0A-lI-Vek">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PVR-qy-1qh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -253,6 +253,162 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QdO-bg-TgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2262" y="-29"/>
+        </scene>
+        <!--Information Posting View Controller-->
+        <scene sceneID="jOy-n9-JBm">
+            <objects>
+                <viewController id="PVR-qy-1qh" customClass="InformationPostingViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oBV-Fa-OyK"/>
+                        <viewControllerLayoutGuide type="bottom" id="hU6-l0-GPp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dRi-Nd-ytR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-IY-itB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB4-ui-0MG">
+                                        <rect key="frame" x="223" y="28" width="155" height="127"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="155" id="Xz0-Qc-Oym"/>
+                                            <constraint firstAttribute="height" constant="127" id="b4o-uq-ir8"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Where are you ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="24" name="HelveticaNeue-Light"/>
+                                                    <font key="NSOriginalFont" size="24" name="MyriadArabic-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="studying">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="24" name="HelveticaNeue"/>
+                                                    <font key="NSOriginalFont" size="24" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" today?">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="24" name="HelveticaNeue-Light"/>
+                                                    <font key="NSOriginalFont" size="24" name="MyriadArabic-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8M-Kt-poT">
+                                        <rect key="frame" x="539" y="19" width="53" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="PVR-qy-1qh" eventType="touchUpInside" id="dIw-KO-Bme"/>
+                                        </connections>
+                                    </button>
+                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-8w-EYC">
+                                        <rect key="frame" x="0.0" y="77" width="600" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="vB4-ui-0MG" secondAttribute="bottom" id="84M-oz-1sQ"/>
+                                    <constraint firstItem="V8M-Kt-poT" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="top" constant="19" id="9qg-qB-tCn"/>
+                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="centerX" secondItem="Kee-IY-itB" secondAttribute="centerX" id="Gzk-b5-cOA"/>
+                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="centerY" secondItem="Kee-IY-itB" secondAttribute="centerY" id="a6n-au-GIa"/>
+                                    <constraint firstAttribute="trailing" secondItem="V8M-Kt-poT" secondAttribute="trailing" constant="8" id="bfS-KR-OYS"/>
+                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="leading" secondItem="Kee-IY-itB" secondAttribute="leading" id="eWj-S7-W0U"/>
+                                    <constraint firstAttribute="height" constant="155" id="f9U-Na-5q1"/>
+                                    <constraint firstItem="vB4-ui-0MG" firstAttribute="centerX" secondItem="Kee-IY-itB" secondAttribute="centerX" id="hpe-Xj-O4x"/>
+                                    <constraint firstAttribute="trailing" secondItem="S6d-8w-EYC" secondAttribute="trailing" id="ika-IJ-cn1"/>
+                                </constraints>
+                            </view>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dDQ-Bj-lkN">
+                                <rect key="frame" x="0.0" y="156" width="600" height="444"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ra5-Ts-Nfi">
+                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGj-Wy-aMF">
+                                        <rect key="frame" x="232" y="35" width="136" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="fOk-Ux-If8"/>
+                                            <constraint firstAttribute="width" constant="136" id="ngk-qc-N1T"/>
+                                        </constraints>
+                                        <state key="normal" title="Find on the Map">
+                                            <color key="titleColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="findButtonPressed:" destination="PVR-qy-1qh" eventType="touchUpInside" id="Tam-vW-TG3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-5F-1fn">
+                                        <rect key="frame" x="256" y="35" width="88" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitButtonPressed:" destination="PVR-qy-1qh" eventType="touchUpInside" id="hpY-0t-JSW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TGj-Wy-aMF" firstAttribute="centerX" secondItem="ra5-Ts-Nfi" secondAttribute="centerX" id="2NZ-cR-YBF"/>
+                                    <constraint firstAttribute="height" constant="100" id="AyM-fv-bi9"/>
+                                    <constraint firstItem="TGj-Wy-aMF" firstAttribute="centerY" secondItem="ra5-Ts-Nfi" secondAttribute="centerY" id="EhW-wy-G9O"/>
+                                    <constraint firstItem="YMT-5F-1fn" firstAttribute="centerX" secondItem="ra5-Ts-Nfi" secondAttribute="centerX" id="OKe-xC-lwc"/>
+                                    <constraint firstItem="YMT-5F-1fn" firstAttribute="centerY" secondItem="ra5-Ts-Nfi" secondAttribute="centerY" id="clt-Y3-RXQ"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-bj-NQ8">
+                                <rect key="frame" x="20" y="163" width="560" height="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kee-IY-itB" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" constant="-20" id="2Th-HW-9cd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kee-IY-itB" secondAttribute="trailing" constant="-20" id="9Xh-Zm-aqZ"/>
+                            <constraint firstItem="dDQ-Bj-lkN" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" constant="-20" id="BiD-ge-nM9"/>
+                            <constraint firstItem="hU6-l0-GPp" firstAttribute="top" secondItem="dDQ-Bj-lkN" secondAttribute="bottom" id="F9a-WQ-9Wh"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="bottom" constant="8" id="LMF-dI-WPG"/>
+                            <constraint firstItem="Kee-IY-itB" firstAttribute="top" secondItem="dRi-Nd-ytR" secondAttribute="topMargin" id="Qjl-a8-vdq"/>
+                            <constraint firstItem="hU6-l0-GPp" firstAttribute="top" secondItem="ra5-Ts-Nfi" secondAttribute="bottom" id="R8g-KX-a76"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ra5-Ts-Nfi" secondAttribute="trailing" constant="-20" id="RGr-x1-KgV"/>
+                            <constraint firstItem="dDQ-Bj-lkN" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="bottom" constant="1" id="UUx-10-Clp"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="trailing" secondItem="dRi-Nd-ytR" secondAttribute="trailingMargin" id="XAm-rd-nej"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dDQ-Bj-lkN" secondAttribute="trailing" constant="-20" id="lQ1-6I-Bd8"/>
+                            <constraint firstItem="ra5-Ts-Nfi" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" constant="-20" id="pfH-ap-21Y"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" id="zeL-14-rV7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomContainerView" destination="ra5-Ts-Nfi" id="BbA-eW-Z4V"/>
+                        <outlet property="cancelButton" destination="V8M-Kt-poT" id="CQ1-yk-HXu"/>
+                        <outlet property="findButton" destination="TGj-Wy-aMF" id="HMF-XX-ssw"/>
+                        <outlet property="linkTextField" destination="S6d-8w-EYC" id="EiS-Aq-Ao5"/>
+                        <outlet property="locationTextField" destination="shQ-bj-NQ8" id="vgO-BB-lwy"/>
+                        <outlet property="mapView" destination="dDQ-Bj-lkN" id="2Mf-qq-UuB"/>
+                        <outlet property="submitButton" destination="YMT-5F-1fn" id="O79-IW-10x"/>
+                        <outlet property="topContainerView" destination="Kee-IY-itB" id="86a-eZ-nGo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="087-26-ISZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2924" y="334"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JQ6-me-CyL">

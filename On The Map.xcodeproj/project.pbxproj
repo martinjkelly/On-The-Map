@@ -25,6 +25,7 @@
 		F38060F41C1CCF54005F1B52 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38060F31C1CCF54005F1B52 /* StudentLocation.swift */; };
 		F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38582971BE4CE3B00D41DFA /* OTMClient.swift */; };
 		F3E1A1001C31561F0069E344 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */; };
+		F3E1A1021C31715A0069E344 /* InformatingPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1A1011C31715A0069E344 /* InformatingPostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		F38060F31C1CCF54005F1B52 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		F38582971BE4CE3B00D41DFA /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
 		F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		F3E1A1011C31715A0069E344 /* InformatingPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformatingPostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				F367D85F1BE2AAF40018634A /* LoginViewController.swift */,
 				F367D8731BE2AD740018634A /* MapViewController.swift */,
 				F367D8751BE2ADA10018634A /* TableViewController.swift */,
+				F3E1A1011C31715A0069E344 /* InformatingPostingViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */,
 				F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */,
 				F34149871BE592D500E231EE /* UdacityClient.swift in Sources */,
+				F3E1A1021C31715A0069E344 /* InformatingPostingViewController.swift in Sources */,
 				F38060F21C1CCF0A005F1B52 /* ParseClient.swift in Sources */,
 				F367D8761BE2ADA10018634A /* TableViewController.swift in Sources */,
 			);
