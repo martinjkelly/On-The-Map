@@ -9,18 +9,47 @@
 import Foundation
 import MapKit
 
-class StudentLocation: NSObject, MKAnnotation
+struct StudentLocation
 {
-    var objectId = ""
-    var uniqueKey = ""
-    var firstName = ""
-    var lastName = ""
-    var mapString = ""
+    var objectId:String
+    var uniqueKey:String?
+    var firstName:String
+    var lastName:String
+    var mapString:String
     var mediaUrl:NSURL?
-    var latitude = 0.0
-    var longitude = 0.0
+    var latitude:Double
+    var longitude:Double
     
-    @objc var coordinate: CLLocationCoordinate2D {
+    init(dict:Dictionary<String,AnyObject>) {
+        objectId = dict["objectId"] as! String
+        uniqueKey = dict["uniqueKey"] as? String
+        firstName = dict["firstName"] as! String
+        lastName = dict["lastName"] as! String
+        mapString = dict["mapString"] as! String
+        
+        if let mediaUrl = dict["mediaURL"] as? String {
+            self.mediaUrl = NSURL(string: mediaUrl)
+        }
+        
+        latitude = dict["latitude"] as! Double
+        longitude = dict["longitude"] as! Double
+    }
+    
+    var annotation: MKPointAnnotation {
+        get {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+            annotation.title = "\(self.firstName) \(self.lastName)"
+            if let subtitle = self.mediaUrl {
+                annotation.subtitle = "\(subtitle)"
+            }
+            
+            return annotation
+        }
+    }
+    
+    /**
+    var coordinate: CLLocationCoordinate2D {
         get {
             return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         }
@@ -36,5 +65,5 @@ class StudentLocation: NSObject, MKAnnotation
         get {
             return "\(self.mediaUrl)"
         }
-    }
+    }*/
 }

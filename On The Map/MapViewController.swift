@@ -12,20 +12,16 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    
-    var parseClient:ParseClient?
+    let studentLocations = StudentLocations.sharedInstance()
+    var currentAnnotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a
-        
-        parseClient = ParseClient.sharedInstance()
-        parseClient?.getStudents() { (success:Bool, locations:[StudentLocation]?) in
-            if (success) {
-                print(locations!.count)
-                self.mapView.addAnnotations(locations!)
-            }
-        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadStudentLocations(false)
     }
     
     @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
@@ -46,7 +42,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
-        
+        mapView.removeAnnotations(currentAnnotations)
+        currentAnnotations.removeAll()
+        loadStudentLocations(true)
+    }
+    
+    func loadStudentLocations(freshData:Bool) {
+        print("loading student locations, with freshData: \(freshData)")
+        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
+            if (success) {
+                for location in locations! {
+                    self.currentAnnotations.append(location.annotation)
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.mapView.addAnnotations(self.currentAnnotations)
+                }
+            } else {
+                //TODO
+            }
+        })
     }
     
     

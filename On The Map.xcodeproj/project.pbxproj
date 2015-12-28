@@ -24,6 +24,7 @@
 		F38060F21C1CCF0A005F1B52 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38060F11C1CCF0A005F1B52 /* ParseClient.swift */; };
 		F38060F41C1CCF54005F1B52 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38060F31C1CCF54005F1B52 /* StudentLocation.swift */; };
 		F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38582971BE4CE3B00D41DFA /* OTMClient.swift */; };
+		F3E1A1001C31561F0069E344 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F38060F11C1CCF0A005F1B52 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		F38060F31C1CCF54005F1B52 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		F38582971BE4CE3B00D41DFA /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				F34149861BE592D500E231EE /* UdacityClient.swift */,
 				F38060F11C1CCF0A005F1B52 /* ParseClient.swift */,
 				F38060F31C1CCF54005F1B52 /* StudentLocation.swift */,
+				F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E1A1001C31561F0069E344 /* StudentLocations.swift in Sources */,
 				F38060F41C1CCF54005F1B52 /* StudentLocation.swift in Sources */,
 				F367D8601BE2AAF40018634A /* LoginViewController.swift in Sources */,
 				F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */,

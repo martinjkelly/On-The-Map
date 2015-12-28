@@ -27,7 +27,7 @@ class UdacityClient: OTMClient {
         let parameters = ["udacity": ["username": username, "password": password]]
         
         let client = OTMClient.sharedInstance()
-        client.send(OTMClient.UdacityAPI.AuthorizationUrl, parameters: parameters) { (result:OTMClient.Result) in
+        client.send(OTMClient.UdacityAPI.AuthorizationURL, parameters: parameters) { (result:OTMClient.Result) in
             
             switch result {
             case .Failure(let error):
@@ -62,7 +62,7 @@ class UdacityClient: OTMClient {
         }
         
         let client = OTMClient.sharedInstance()
-        client.delete(OTMClient.UdacityAPI.AuthorizationUrl, parameters: headers) { (result:OTMClient.Result) in
+        client.delete(OTMClient.UdacityAPI.AuthorizationURL, parameters: headers) { (result:OTMClient.Result) in
             switch result {
             case .Failure(let error):
                 print("logout failed with error: \(error)")

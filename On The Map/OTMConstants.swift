@@ -11,7 +11,9 @@ import Foundation
 extension OTMClient {
     
     struct UdacityAPI {
-        static let AuthorizationUrl = "https://www.udacity.com/api/session"
+        static let UdacityURL = "www.udacity.com"
+        static let AuthorizationURL = "https://www.udacity.com/api/session"
+        static let SignupURL = "https://www.google.com/url?q=https://www.udacity.com/account/auth%23!/signin&sa=D&usg=AFQjCNHOjlXo3QS15TqT0Bp_TKoR9Dvypw"
     }
     
     struct ParseAPI {

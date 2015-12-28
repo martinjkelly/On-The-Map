@@ -157,7 +157,8 @@ class OTMClient: NSObject {
                 return
             }
             
-            if url!.host == "www.udacity.com" {
+            // Udacity responses send an extra 5 bytes of data that we do not need.
+            if url!.host == OTMClient.UdacityAPI.UdacityURL {
                 data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
             }
             

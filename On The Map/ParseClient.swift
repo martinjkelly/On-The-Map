@@ -19,7 +19,7 @@ class ParseClient: OTMClient
         return Singleton.sharedInstance
     }
     
-    func getStudents(limit:Int = 100, offset:Int = 0, orderBy:String = "-createdAt", completionHandler: (success:Bool, students: [StudentLocation]?) -> Void) {
+    func getStudentLocations(limit:Int = 100, offset:Int = 0, orderBy:String = "-createdAt", completionHandler: (success:Bool, students: [StudentLocation]?) -> Void) {
         let client = OTMClient.sharedInstance()
         
         let parameters = [
@@ -40,14 +40,11 @@ class ParseClient: OTMClient
                 break
             case .Success(let res):
                 if let json = res!["results"] as? [[String:AnyObject]] {
-                    print("parsing student locations was a success. \(json)")
                     completionHandler(success: true, students: self.parseStudentLocations(json))
                 } else {
                     print("parsing student locations falied.")
                     completionHandler(success: false, students: nil)
                 }
-                
-                
                 break
             }
 
@@ -58,20 +55,7 @@ class ParseClient: OTMClient
         var locations = [StudentLocation]()
         
         for location in json {
-            let studentLocation = StudentLocation()
-            studentLocation.objectId = location["objectId"] as! String
-            studentLocation.uniqueKey = location["uniqueKey"] as! String
-            studentLocation.firstName = location["firstName"] as! String
-            studentLocation.lastName = location["lastName"] as! String
-            studentLocation.mapString = location["mapString"] as! String
-            if let mediaUrl = location["mediaURL"] as? String {
-                studentLocation.mediaUrl = NSURL(string: mediaUrl)
-            } else {
-                print(location["mediaURL"])
-            }
-            studentLocation.latitude = location["latitude"] as! Double
-            studentLocation.longitude = location["longitude"] as! Double
-            
+            let studentLocation = StudentLocation(dict: location)
             locations.append(studentLocation)
         }
         

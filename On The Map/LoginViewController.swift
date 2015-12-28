@@ -72,8 +72,7 @@ class LoginViewController: UIViewController {
     @IBAction func signUpButton(sender: UIButton) {
         
         // open the udacity sign up page url
-        let urlString = "https://www.google.com/url?q=https://www.udacity.com/account/auth%23!/signin&sa=D&usg=AFQjCNHOjlXo3QS15TqT0Bp_TKoR9Dvypw"
-        UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
+        UIApplication.sharedApplication().openURL(NSURL(string: OTMClient.UdacityAPI.SignupURL)!)
         
     }
 
