@@ -24,9 +24,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         loadStudentLocations(false)
     }
     
+    // MARK: Methods
+    func loadStudentLocations(freshData:Bool) {
+        print("loading student locations, with freshData: \(freshData)")
+        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
+            if (success) {
+                for location in locations! {
+                    self.currentAnnotations.append(location.annotation)
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.mapView.addAnnotations(self.currentAnnotations)
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
+                }
+            }
+        })
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if let urlString = view.annotation?.subtitle {
+            if let url = NSURL(string: urlString!) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+    }
+    
+    // MARK: Actions
     @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
-        let client = UdacityClient.sharedInstance()
-        client.logout() { (success:Bool) in
+        UdacityClient.sharedInstance().logout() { (success:Bool) in
             dispatch_async(dispatch_get_main_queue()) {
                 let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
                 
@@ -36,7 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
+
     @IBAction func addPinButtonPressed(sender: UIBarButtonItem) {
         
     }
@@ -46,23 +73,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         currentAnnotations.removeAll()
         loadStudentLocations(true)
     }
-    
-    func loadStudentLocations(freshData:Bool) {
-        print("loading student locations, with freshData: \(freshData)")
-        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
-            if (success) {
-                print("locations received: \(locations)")
-                for location in locations! {
-                    self.currentAnnotations.append(location.annotation)
-                }
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.mapView.addAnnotations(self.currentAnnotations)
-                }
-            } else {
-                //TODO
-            }
-        })
-    }
-    
     
 }

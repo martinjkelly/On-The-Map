@@ -27,7 +27,6 @@ class InformationPostingViewController:UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         geocoder = CLGeocoder()
     }
     
@@ -60,6 +59,7 @@ class InformationPostingViewController:UIViewController
             linkTextField.hidden = true
             findButton.hidden = false
             submitButton.hidden = true
+            cancelButton.titleLabel?.textColor = OTMClient.CustomColors.darKBlueColor
         } else {
             topContainerView.backgroundColor = OTMClient.CustomColors.darKBlueColor
             bottomContainerView.backgroundColor = UIColor.clearColor()
@@ -68,6 +68,7 @@ class InformationPostingViewController:UIViewController
             linkTextField.hidden = false
             findButton.hidden = true
             submitButton.hidden = false
+            cancelButton.titleLabel?.textColor = UIColor.whiteColor()
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = (selectedPlacemark?.location?.coordinate)!

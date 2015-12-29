@@ -27,11 +27,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         loadStudentLocations(false)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    // MARK: TableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -50,8 +46,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected row at indexPath: \(indexPath)")
+        
+        let studentLocation = locations[indexPath.row]
+        if let link = studentLocation.mediaUrl {
+            UIApplication.sharedApplication().openURL(link)
+        }
     }
     
+    // MARK: Methods
     func loadStudentLocations(freshData:Bool) {
         print("loading student locations, with freshData: \(freshData)")
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
@@ -62,11 +64,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.tableView.reloadData()
                 }
             } else {
-                //TODO
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
+                }
             }
         })
     }
     
+    // MARK: Actions
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
         self.locations.removeAll()
         loadStudentLocations(true)

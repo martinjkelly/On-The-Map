@@ -434,10 +434,10 @@
             </objects>
             <point key="canvasLocation" x="940" y="429"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="YY5-x4-ALb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wSg-rM-Rep" sceneMemberID="viewController">
+                <navigationController title="Map" automaticallyAdjustsScrollViewInsets="NO" id="wSg-rM-Rep" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" image="map" id="ToQ-3k-Roh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qcD-BO-KkN">
@@ -453,10 +453,10 @@
             </objects>
             <point key="canvasLocation" x="1730" y="-29"/>
         </scene>
-        <!--Item 2-->
+        <!--List-->
         <scene sceneID="aI8-JZ-Ue9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pVu-tH-qtq" sceneMemberID="viewController">
+                <navigationController title="List" automaticallyAdjustsScrollViewInsets="NO" id="pVu-tH-qtq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 2" image="list" id="w3f-ae-pwF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p3l-dS-B2W">

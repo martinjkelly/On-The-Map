@@ -87,7 +87,7 @@
 			children = (
 				F367D8721BE2AB2E0018634A /* Model */,
 				F367D86F1BE2AB030018634A /* Supporting Files */,
-				F367D8711BE2AB250018634A /* View */,
+				F367D8711BE2AB250018634A /* Controllers */,
 				F367D8701BE2AB100018634A /* Storyboards */,
 				F367D8641BE2AAF40018634A /* Assets.xcassets */,
 			);
@@ -118,7 +118,7 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		F367D8711BE2AB250018634A /* View */ = {
+		F367D8711BE2AB250018634A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				F367D85F1BE2AAF40018634A /* LoginViewController.swift */,
@@ -126,7 +126,7 @@
 				F367D8751BE2ADA10018634A /* TableViewController.swift */,
 				F3E1A1011C31715A0069E344 /* InformatingPostingViewController.swift */,
 			);
-			name = View;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		F367D8721BE2AB2E0018634A /* Model */ = {

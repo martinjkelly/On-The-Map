@@ -142,13 +142,16 @@ class OTMClient: NSObject {
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                var errorString = ""
                 if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    errorString = "Your request returned an invalid response! Status code: \(response.statusCode)!"
                 } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
+                    errorString = "Your request returned an invalid response! Response: \(response)!"
                 } else {
-                    print("Your request returned an invalid response!")
+                    errorString = "Your request returned an invalid response!"
                 }
+                
+                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(errorString)"])))
                 return
             }
             

@@ -44,29 +44,26 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(sender: UIButton) {
         
         if (usernameField.text!.isEmpty || passwordField.text!.isEmpty) {
-            loginFailed("Missing credentials", reason: "Please enter your username and password to login")
+            showErrorAlert("Missing credentials", message: "Please enter your username and password to login")
             return
         }
         
-        let udacityClient = UdacityClient.sharedInstance()
-        udacityClient.login(usernameField.text!, password: passwordField.text!) { (success) in
+        UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!) { (success) in
             
-            dispatch_async(dispatch_get_main_queue()) {
-                let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
+            if (success) {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
             
-                let initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController")
-                appDelegate.window?.rootViewController = initialViewController
-                appDelegate.window?.makeKeyAndVisible()
+                    let initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController")
+                    appDelegate.window?.rootViewController = initialViewController
+                    appDelegate.window?.makeKeyAndVisible()
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.showErrorAlert("Invalid Credentials", message: "The login details provided are not valid.")
+                }
             }
         }
-    }
-    
-    func loginFailed(title:String, reason:String) {
-        let alertView = UIAlertController(title: title, message: reason, preferredStyle: .Alert)
-        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        presentViewController(alertView, animated: true, completion: nil)
     }
     
     @IBAction func signUpButton(sender: UIButton) {
@@ -76,5 +73,18 @@ class LoginViewController: UIViewController {
         
     }
 
+}
+
+extension UIViewController {
+    
+    // Show a quick alert error message
+    func showErrorAlert(title:String, message:String) {
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
 }
 
