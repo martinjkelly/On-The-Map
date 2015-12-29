@@ -27,6 +27,32 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         loadStudentLocations(false)
     }
     
+    // MARK: Methods
+    func loadStudentLocations(freshData:Bool) {
+        print("loading student locations, with freshData: \(freshData)")
+        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
+            if (success) {
+                self.locations = locations!
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
+                }
+            }
+        })
+    }
+    
+    // MARK: Actions
+    @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
+        self.locations.removeAll()
+        loadStudentLocations(true)
+    }
+}
+
+extension TableViewController {
+    
     // MARK: TableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
@@ -45,35 +71,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected row at indexPath: \(indexPath)")
-        
         let studentLocation = locations[indexPath.row]
         if let link = studentLocation.mediaUrl {
             UIApplication.sharedApplication().openURL(link)
         }
     }
     
-    // MARK: Methods
-    func loadStudentLocations(freshData:Bool) {
-        print("loading student locations, with freshData: \(freshData)")
-        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
-            if (success) {
-                self.locations = locations!
-                print(locations!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
-                }
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
-                }
-            }
-        })
-    }
-    
-    // MARK: Actions
-    @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
-        self.locations.removeAll()
-        loadStudentLocations(true)
-    }
 }

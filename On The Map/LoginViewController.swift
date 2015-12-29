@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
     
     }
     
+    // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
         
         if (usernameField.text!.isEmpty || passwordField.text!.isEmpty) {

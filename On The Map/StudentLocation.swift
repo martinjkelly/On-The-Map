@@ -47,23 +47,4 @@ struct StudentLocation
             return annotation
         }
     }
-    
-    /**
-    var coordinate: CLLocationCoordinate2D {
-        get {
-            return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-        }
-    }
-    
-    var title:String? {
-        get {
-            return "\(self.firstName) \(self.lastName)"
-        }
-    }
-    
-    var subtitle:String? {
-        get {
-            return "\(self.mediaUrl)"
-        }
-    }*/
 }
