@@ -317,9 +317,10 @@
                                             <action selector="cancelButtonPressed:" destination="PVR-qy-1qh" eventType="touchUpInside" id="dIw-KO-Bme"/>
                                         </connections>
                                     </button>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-8w-EYC">
-                                        <rect key="frame" x="0.0" y="77" width="328" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-8w-EYC">
+                                        <rect key="frame" x="8" y="72" width="312" height="40"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                 </subviews>
@@ -327,13 +328,11 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="vB4-ui-0MG" secondAttribute="bottom" id="84M-oz-1sQ"/>
                                     <constraint firstItem="V8M-Kt-poT" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="top" constant="19" id="9qg-qB-tCn"/>
-                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="centerX" secondItem="Kee-IY-itB" secondAttribute="centerX" id="Gzk-b5-cOA"/>
-                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="centerY" secondItem="Kee-IY-itB" secondAttribute="centerY" id="a6n-au-GIa"/>
+                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="leading" secondItem="Kee-IY-itB" secondAttribute="leading" constant="8" id="YT7-Ps-BCa"/>
                                     <constraint firstAttribute="trailing" secondItem="V8M-Kt-poT" secondAttribute="trailing" constant="8" id="bfS-KR-OYS"/>
-                                    <constraint firstItem="S6d-8w-EYC" firstAttribute="leading" secondItem="Kee-IY-itB" secondAttribute="leading" id="eWj-S7-W0U"/>
+                                    <constraint firstAttribute="trailing" secondItem="S6d-8w-EYC" secondAttribute="trailing" constant="8" id="dFM-vx-IFD"/>
                                     <constraint firstAttribute="height" constant="155" id="f9U-Na-5q1"/>
                                     <constraint firstItem="vB4-ui-0MG" firstAttribute="centerX" secondItem="Kee-IY-itB" secondAttribute="centerX" id="hpe-Xj-O4x"/>
-                                    <constraint firstAttribute="trailing" secondItem="S6d-8w-EYC" secondAttribute="trailing" id="ika-IJ-cn1"/>
                                 </constraints>
                             </view>
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dDQ-Bj-lkN">
@@ -356,9 +355,10 @@
                                             <action selector="findButtonPressed:" destination="PVR-qy-1qh" eventType="touchUpInside" id="Tam-vW-TG3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-5F-1fn">
-                                        <rect key="frame" x="256" y="35" width="88" height="30"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-5F-1fn">
+                                        <rect key="frame" x="130" y="41" width="69" height="18"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" red="0.062745098039215685" green="0.24705882352941178" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -377,9 +377,9 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-bj-NQ8">
-                                <rect key="frame" x="16" y="163" width="288" height="30"/>
+                                <rect key="frame" x="20" y="163" width="280" height="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
@@ -389,15 +389,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Kee-IY-itB" secondAttribute="trailing" constant="-20" id="9Xh-Zm-aqZ"/>
                             <constraint firstItem="dDQ-Bj-lkN" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" constant="-20" id="BiD-ge-nM9"/>
                             <constraint firstItem="hU6-l0-GPp" firstAttribute="top" secondItem="dDQ-Bj-lkN" secondAttribute="bottom" id="F9a-WQ-9Wh"/>
-                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="bottom" constant="8" id="LMF-dI-WPG"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="trailing" secondItem="dRi-Nd-ytR" secondAttribute="trailingMargin" id="Fdj-b6-0Jv"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" id="JgE-Sh-M4h"/>
                             <constraint firstItem="Kee-IY-itB" firstAttribute="top" secondItem="dRi-Nd-ytR" secondAttribute="topMargin" id="Qjl-a8-vdq"/>
                             <constraint firstItem="hU6-l0-GPp" firstAttribute="top" secondItem="ra5-Ts-Nfi" secondAttribute="bottom" id="R8g-KX-a76"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ra5-Ts-Nfi" secondAttribute="trailing" constant="-20" id="RGr-x1-KgV"/>
                             <constraint firstItem="dDQ-Bj-lkN" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="bottom" constant="1" id="UUx-10-Clp"/>
-                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="trailing" secondItem="dRi-Nd-ytR" secondAttribute="trailingMargin" id="XAm-rd-nej"/>
+                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="top" secondItem="Kee-IY-itB" secondAttribute="bottom" constant="8" id="hnG-bP-kb5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dDQ-Bj-lkN" secondAttribute="trailing" constant="-20" id="lQ1-6I-Bd8"/>
                             <constraint firstItem="ra5-Ts-Nfi" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" constant="-20" id="pfH-ap-21Y"/>
-                            <constraint firstItem="shQ-bj-NQ8" firstAttribute="leading" secondItem="dRi-Nd-ytR" secondAttribute="leadingMargin" id="zeL-14-rV7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -407,6 +407,7 @@
                         <outlet property="linkTextField" destination="S6d-8w-EYC" id="EiS-Aq-Ao5"/>
                         <outlet property="locationTextField" destination="shQ-bj-NQ8" id="vgO-BB-lwy"/>
                         <outlet property="mapView" destination="dDQ-Bj-lkN" id="2Mf-qq-UuB"/>
+                        <outlet property="questionLabel" destination="vB4-ui-0MG" id="S5d-Ts-7NN"/>
                         <outlet property="submitButton" destination="YMT-5F-1fn" id="O79-IW-10x"/>
                         <outlet property="topContainerView" destination="Kee-IY-itB" id="86a-eZ-nGo"/>
                     </connections>
@@ -480,6 +481,6 @@
         <image name="udacity" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Kd-fL-xjl"/>
+        <segue reference="RV2-Hm-SLo"/>
     </inferredMetricsTieBreakers>
 </document>

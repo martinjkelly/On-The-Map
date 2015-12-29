@@ -11,7 +11,7 @@ import MapKit
 
 class InformationPostingViewController:UIViewController
 {
-    var step = 0
+    var step = 1
     let spanSize = 0.025
     var geocoder:CLGeocoder!
     var selectedPlacemark:CLPlacemark?
@@ -24,6 +24,7 @@ class InformationPostingViewController:UIViewController
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,7 @@ class InformationPostingViewController:UIViewController
             topContainerView.backgroundColor = OTMClient.CustomColors.greyColor
             bottomContainerView.backgroundColor = OTMClient.CustomColors.greyColor
             
+            questionLabel.hidden = false
             mapView.hidden = true
             locationTextField.hidden = false
             linkTextField.hidden = true
@@ -61,8 +63,10 @@ class InformationPostingViewController:UIViewController
             submitButton.hidden = true
             cancelButton.titleLabel?.textColor = OTMClient.CustomColors.darKBlueColor
         } else {
-            topContainerView.backgroundColor = OTMClient.CustomColors.darKBlueColor
+            topContainerView.backgroundColor = OTMClient.CustomColors.blueColor
             bottomContainerView.backgroundColor = UIColor.clearColor()
+            
+            questionLabel.hidden = true
             mapView.hidden = false
             locationTextField.hidden = true
             linkTextField.hidden = false
