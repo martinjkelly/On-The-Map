@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PVR-qy-1qh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -191,7 +191,11 @@
                                     <action selector="reloadDataButtonPressed:" destination="3e6-3V-JSz" id="3dD-36-jih"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="pin" id="sru-1d-Vpy"/>
+                            <barButtonItem image="pin" id="sru-1d-Vpy">
+                                <connections>
+                                    <segue destination="PVR-qy-1qh" kind="presentation" id="3Kd-fL-xjl"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -241,6 +245,7 @@
                             <barButtonItem image="pin" id="sZi-bL-uxz">
                                 <connections>
                                     <action selector="addPinButtonPressed:" destination="ezV-Od-6GF" id="Wa4-SI-Vnk"/>
+                                    <segue destination="PVR-qy-1qh" kind="presentation" id="RV2-Hm-SLo"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -263,14 +268,14 @@
                         <viewControllerLayoutGuide type="bottom" id="hU6-l0-GPp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dRi-Nd-ytR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kee-IY-itB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                                <rect key="frame" x="-4" y="0.0" width="328" height="155"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB4-ui-0MG">
-                                        <rect key="frame" x="223" y="28" width="155" height="127"/>
+                                        <rect key="frame" x="87" y="28" width="155" height="127"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="155" id="Xz0-Qc-Oym"/>
                                             <constraint firstAttribute="height" constant="127" id="b4o-uq-ir8"/>
@@ -313,7 +318,7 @@
                                         </connections>
                                     </button>
                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-8w-EYC">
-                                        <rect key="frame" x="0.0" y="77" width="600" height="30"/>
+                                        <rect key="frame" x="0.0" y="77" width="328" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
@@ -332,13 +337,13 @@
                                 </constraints>
                             </view>
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dDQ-Bj-lkN">
-                                <rect key="frame" x="0.0" y="156" width="600" height="444"/>
+                                <rect key="frame" x="-4" y="156" width="328" height="412"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ra5-Ts-Nfi">
-                                <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                <rect key="frame" x="-4" y="468" width="328" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGj-Wy-aMF">
-                                        <rect key="frame" x="232" y="35" width="136" height="30"/>
+                                        <rect key="frame" x="96" y="35" width="136" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fOk-Ux-If8"/>
@@ -372,7 +377,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-bj-NQ8">
-                                <rect key="frame" x="20" y="163" width="560" height="30"/>
+                                <rect key="frame" x="16" y="163" width="288" height="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -408,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="087-26-ISZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2924" y="334"/>
+            <point key="canvasLocation" x="2902" y="429"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JQ6-me-CyL">
@@ -474,4 +479,7 @@
         <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Kd-fL-xjl"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -51,6 +51,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         print("loading student locations, with freshData: \(freshData)")
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
+                print("locations received: \(locations)")
                 for location in locations! {
                     self.currentAnnotations.append(location.annotation)
                 }
