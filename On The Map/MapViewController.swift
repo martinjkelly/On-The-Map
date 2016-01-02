@@ -28,6 +28,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Methods
     func loadStudentLocations(freshData:Bool) {
         print("loading student locations, with freshData: \(freshData)")
+        
+        showActivityIndicator()
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
                 for location in locations! {
@@ -41,6 +43,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
                 }
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.hideActivityIndicator()
             }
         })
     }
@@ -74,7 +80,6 @@ extension MapViewController {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        print("calling annotation view")
         let reuseIdentifier = "mapPin"
         var annotationView:MKPinAnnotationView
         
@@ -95,11 +100,16 @@ extension MapViewController {
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let urlString = view.annotation?.subtitle {
-            if let url = NSURL(string: urlString!) {
-                UIApplication.sharedApplication().openURL(url)
-            }
+        
+        guard let urlString = (view.annotation?.subtitle)! else {
+            self.showErrorAlert("Invalid URL", message: "The provided link was invalid or missing")
+            return
         }
+        
+        if let url = NSURL(string: urlString) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
     }
     
 }

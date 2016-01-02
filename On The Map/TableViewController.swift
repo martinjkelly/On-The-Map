@@ -30,6 +30,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Methods
     func loadStudentLocations(freshData:Bool) {
         print("loading student locations, with freshData: \(freshData)")
+        
+        showActivityIndicator()
+        
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
                 self.locations = locations!
@@ -40,6 +43,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 dispatch_async(dispatch_get_main_queue()) {
                     self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
                 }
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.hideActivityIndicator()
             }
         })
     }

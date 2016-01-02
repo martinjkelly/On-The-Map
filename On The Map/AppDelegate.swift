@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var activityIndicator:UIActivityIndicatorView?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,6 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 openURL: url,
                 sourceApplication: sourceApplication,
                 annotation: annotation)
+    }
+    
+    func showActivityIndicator(currentView:UIViewController) {
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0, 100, 100)) as UIActivityIndicatorView
+        activityIndicator!.center = currentView.view.center
+        activityIndicator!.hidesWhenStopped = true
+        activityIndicator!.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        currentView.view.addSubview(activityIndicator!)
+        activityIndicator!.startAnimating()
+        
+    }
+    
+    func hideActivityIndicator() {
+        if activityIndicator != nil {
+            activityIndicator!.stopAnimating()
+            activityIndicator = nil
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

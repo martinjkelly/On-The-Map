@@ -33,7 +33,6 @@ class InformationPostingViewController:UIViewController
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         view.backgroundColor = OTMClient.CustomColors.blueColor
         loadCurrentStep()
     }

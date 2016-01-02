@@ -49,6 +49,7 @@ class LoginViewController: UIViewController {
             return
         }
         
+        showActivityIndicator()
         UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!) { (success) in
             
             if (success) {
@@ -63,6 +64,10 @@ class LoginViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.showErrorAlert("Invalid Credentials", message: "The login details provided are not valid.")
                 }
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.hideActivityIndicator()
             }
         }
     }
@@ -85,6 +90,14 @@ extension UIViewController {
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    func showActivityIndicator() {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).showActivityIndicator(self)
+    }
+    
+    func hideActivityIndicator() {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).hideActivityIndicator()
     }
     
 }
