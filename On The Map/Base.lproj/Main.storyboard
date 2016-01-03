@@ -184,7 +184,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="y7N-hK-6sM">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ooh-TI-aN3"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ooh-TI-aN3">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="3e6-3V-JSz" id="PwB-n1-8Kl"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="POV-bg-9CA">
                                 <connections>
@@ -481,6 +485,6 @@
         <image name="udacity" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RV2-Hm-SLo"/>
+        <segue reference="3Kd-fL-xjl"/>
     </inferredMetricsTieBreakers>
 </document>

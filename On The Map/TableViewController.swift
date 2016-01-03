@@ -56,6 +56,19 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
         loadStudentLocations(true)
     }
+    
+    @IBAction func logoutButtonPressed(sender: UIBarButtonItem) {
+        
+        UdacityClient.sharedInstance().logout() { (success:Bool) in
+            dispatch_async(dispatch_get_main_queue()) {
+                let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
+                
+                let initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginViewController")
+                appDelegate.window?.rootViewController = initialViewController
+                appDelegate.window?.makeKeyAndVisible()
+            }
+        }
+    }
 }
 
 extension TableViewController {
