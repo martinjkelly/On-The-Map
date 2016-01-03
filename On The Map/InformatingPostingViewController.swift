@@ -33,7 +33,11 @@ class InformationPostingViewController:UIViewController
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         view.backgroundColor = OTMClient.CustomColors.blueColor
+        locationTextField.delegate = self
+        linkTextField.delegate = self
+        
         loadCurrentStep()
     }
     
@@ -128,4 +132,13 @@ class InformationPostingViewController:UIViewController
     @IBAction func cancelButtonPressed(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+extension InformationPostingViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
 }

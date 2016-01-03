@@ -31,10 +31,12 @@ class LoginViewController: UIViewController {
         let usernamePaddingView = UIView(frame: CGRectMake(0,0,015,usernameField.frame.height))
         usernameField.leftView = usernamePaddingView
         usernameField.leftViewMode = .Always
+        usernameField.delegate = self
         
         let passwordPaddingView = UIView(frame: CGRectMake(0,0,015,usernameField.frame.height))
         passwordField.leftView = passwordPaddingView
         passwordField.leftViewMode = .Always
+        passwordField.delegate = self
     
     }
     
@@ -106,6 +108,15 @@ class LoginViewController: UIViewController {
         
     }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
 }
 
 extension LoginViewController: FBSDKLoginButtonDelegate {

@@ -66,9 +66,7 @@ class OTMClient: NSObject {
         }
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            
             self.handleResponse(request, data: data, response: response, error: error, completionHandler: completionHandler)
-
         }
         
         task.resume()
@@ -91,7 +89,6 @@ class OTMClient: NSObject {
         }
         
         if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
-            print(try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments))
             request.HTTPBody = jsonData
         } else {
             print("error sending params as JSON, params: \(parameters)")
@@ -122,7 +119,6 @@ class OTMClient: NSObject {
         }
         
         if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
-            print(try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments))
             request.HTTPBody = jsonData
         } else {
             print("error sending params as JSON, params: \(parameters)")

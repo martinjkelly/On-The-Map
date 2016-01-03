@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="mjk-ju-JVu">
-                                <rect key="frame" x="107" y="259" width="201" height="217"/>
+                                <rect key="frame" x="80" y="240" width="256" height="256"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
