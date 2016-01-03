@@ -21,6 +21,7 @@
 		F367D87B1BE2B7490018634A /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8781BE2B1070018634A /* Roboto-Regular.ttf */; };
 		F367D87C1BE2B74E0018634A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F367D8771BE2B1070018634A /* Roboto-Medium.ttf */; };
 		F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D8861BE2D1760018634A /* OTMConstants.swift */; };
+		F3782BC51C382E6200559D30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3782BC41C382E6200559D30 /* User.swift */; };
 		F38060F21C1CCF0A005F1B52 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38060F11C1CCF0A005F1B52 /* ParseClient.swift */; };
 		F38060F41C1CCF54005F1B52 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38060F31C1CCF54005F1B52 /* StudentLocation.swift */; };
 		F38582981BE4CE3B00D41DFA /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38582971BE4CE3B00D41DFA /* OTMClient.swift */; };
@@ -46,6 +47,7 @@
 		F367D8831BE2CF350018634A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "On The Map/FBSDKCoreKit.framework"; sourceTree = SOURCE_ROOT; };
 		F367D8851BE2CF5A0018634A /* FBBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBBridgeHeader.h; sourceTree = "<group>"; };
 		F367D8861BE2D1760018634A /* OTMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMConstants.swift; sourceTree = "<group>"; };
+		F3782BC41C382E6200559D30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F38060F11C1CCF0A005F1B52 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		F38060F31C1CCF54005F1B52 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		F38582971BE4CE3B00D41DFA /* OTMClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				F38060F11C1CCF0A005F1B52 /* ParseClient.swift */,
 				F38060F31C1CCF54005F1B52 /* StudentLocation.swift */,
 				F3E1A0FF1C31561F0069E344 /* StudentLocations.swift */,
+				F3782BC41C382E6200559D30 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				F367D85E1BE2AAF40018634A /* AppDelegate.swift in Sources */,
 				F367D8871BE2D1760018634A /* OTMConstants.swift in Sources */,
 				F34149871BE592D500E231EE /* UdacityClient.swift in Sources */,
+				F3782BC51C382E6200559D30 /* User.swift in Sources */,
 				F3E1A1021C31715A0069E344 /* InformatingPostingViewController.swift in Sources */,
 				F38060F21C1CCF0A005F1B52 /* ParseClient.swift in Sources */,
 				F367D8761BE2ADA10018634A /* TableViewController.swift in Sources */,

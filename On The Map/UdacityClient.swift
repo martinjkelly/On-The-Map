@@ -12,6 +12,7 @@ class UdacityClient: OTMClient {
     
     var userId:Int?
     var sessionId:String?
+    var user:User?
     
     override class func sharedInstance() -> UdacityClient {
         
@@ -26,8 +27,7 @@ class UdacityClient: OTMClient {
         
         let parameters = ["udacity": ["username": username, "password": password]]
         
-        let client = OTMClient.sharedInstance()
-        client.send(OTMClient.UdacityAPI.AuthorizationURL, parameters: parameters) { (result:OTMClient.Result) in
+        OTMClient.sharedInstance().send(OTMClient.UdacityAPI.AuthorizationURL, parameters: parameters, headers: nil) { (result:OTMClient.Result) in
             
             switch result {
             case .Failure(let error):
@@ -40,8 +40,32 @@ class UdacityClient: OTMClient {
                 
                 self.userId = Int(account!["key"] as! String)
                 self.sessionId = session!["id"] as? String
-                
-                completionHandler(success: true)
+
+                self.getUserData(self.userId!) { (success:Bool, userDict:Dictionary<String,AnyObject>?, error:NSError?) in
+                    
+                    if success {
+                        self.user = User(dict: userDict!)
+                        completionHandler(success: true)
+                    } else {
+                        completionHandler(success: false)
+                    }
+                }
+                break
+            }
+        }
+    }
+    
+    func getUserData(accountID:Int, completionHandler:(success:Bool, user:Dictionary<String,AnyObject>?, error:NSError?) -> Void) {
+        
+        OTMClient.sharedInstance().fetch("\(OTMClient.UdacityAPI.GetUserDataURL)\(accountID)", parameters: Dictionary<String,AnyObject>(), headers: nil) { (result:OTMClient.Result) in
+            
+            switch result {
+            case .Failure(let error):
+                print("get user data failed with error: \(error)")
+                completionHandler(success: false, user: nil, error: error)
+                break
+            case .Success(let res):
+                completionHandler(success: true, user: res!["user"] as? [String:AnyObject], error: nil)
                 break
             }
         }
@@ -61,15 +85,16 @@ class UdacityClient: OTMClient {
             headers["X-XSRF-TOKEN"] = xsrfCookie.value
         }
         
-        let client = OTMClient.sharedInstance()
-        client.delete(OTMClient.UdacityAPI.AuthorizationURL, parameters: headers) { (result:OTMClient.Result) in
+        OTMClient.sharedInstance().delete(OTMClient.UdacityAPI.AuthorizationURL, parameters: headers) { (result:OTMClient.Result) in
             switch result {
             case .Failure(let error):
                 print("logout failed with error: \(error)")
                 completionHandler(success: false)
                 break
-            case .Success(let res):
-                print("logout success, retuned: \(res)")
+            case .Success(_):
+                self.user = nil
+                self.sessionId = nil
+                self.userId = nil
                 completionHandler(success: true)
                 break
             }

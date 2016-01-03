@@ -82,7 +82,15 @@ class InformationPostingViewController:UIViewController
     
     // MARK: Actions
     @IBAction func submitButtonPressed(sender: UIButton) {
-        switchView()
+        
+        ParseClient.sharedInstance().submitStudentLocation(selectedPlacemark!, locationString: locationTextField.text!, linkString: linkTextField.text!) { (success:Bool) in
+            
+            StudentLocations.sharedInstance().getStudentLocations(true, completion: { (success:Bool, locations: [StudentLocation]?) in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
     }
     
     @IBAction func findButtonPressed(sender: UIButton) {

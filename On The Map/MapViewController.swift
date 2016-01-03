@@ -27,9 +27,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Methods
     func loadStudentLocations(freshData:Bool) {
-        print("loading student locations, with freshData: \(freshData)")
         
         showActivityIndicator()
+        
+        mapView.removeAnnotations(currentAnnotations)
+        currentAnnotations.removeAll()
+        
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
                 for location in locations! {
@@ -69,8 +72,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
-        mapView.removeAnnotations(currentAnnotations)
-        currentAnnotations.removeAll()
         loadStudentLocations(true)
     }
     

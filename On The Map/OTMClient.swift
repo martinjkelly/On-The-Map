@@ -33,6 +33,7 @@ class OTMClient: NSObject {
         return Singleton.sharedInstance
     }
     
+    // HTTP GET request
     func fetch(urlString:String, parameters: [String:AnyObject], headers: [String:AnyObject]?, completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
         
         let url = NSURL(string: urlString + OTMClient.escapedParameters(parameters))
@@ -45,30 +46,7 @@ class OTMClient: NSObject {
         }
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-        
-            guard (error == nil) else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(error)"])))
-                return
-            }
-            
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
-                } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
-                } else {
-                    print("Your request returned an invalid response!")
-                }
-                return
-            }
-            
-            guard let data = data else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
-                return
-            }
-            
-            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
-            
+            self.handleResponse(request, data: data, response: response, error: error, completionHandler: completionHandler)
         }
         
         task.resume()
@@ -76,6 +54,7 @@ class OTMClient: NSObject {
         return task
     }
     
+    // HTTP DELETE request
     func delete(urlString:String, parameters: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionTask {
         
         let url = NSURL(string: urlString)
@@ -84,54 +63,6 @@ class OTMClient: NSObject {
         
         for (key,value) in parameters {
             request.setValue(value as? String, forHTTPHeaderField: key)
-        }
-        
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            guard (error == nil) else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(error)"])))
-                return
-            }
-            
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
-                } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
-                } else {
-                    print("Your request returned an invalid response!")
-                }
-                return
-            }
-            
-            guard var data = data else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
-                return
-            }
-            
-            if url!.host == "www.udacity.com" {
-                data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            }
-            
-            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
-
-        }
-        
-        task.resume()
-        return task
-    }
-    
-    func send(urlString:String, parameters: [String:AnyObject], completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
-        
-        let url = NSURL(string: urlString)
-        let request = NSMutableURLRequest(URL: url!)
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPMethod = "POST"
-        
-        if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
-            request.HTTPBody = jsonData
-        } else {
-            print("error sending params as JSON, params: \(parameters)")
         }
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
@@ -166,12 +97,107 @@ class OTMClient: NSObject {
             }
             
             OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
-            
+
+        }
+        
+        task.resume()
+        return task
+    }
+    
+    // HTTP POST request
+    func send(urlString:String, parameters: [String:AnyObject], headers: [String:AnyObject]?, completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
+        
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "POST"
+        
+        if let headers = headers {
+            for (key,value) in headers {
+                request.setValue(value as? String, forHTTPHeaderField: key)
+            }
+        }
+        
+        if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
+            request.HTTPBody = jsonData
+        } else {
+            print("error sending params as JSON, params: \(parameters)")
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            self.handleResponse(request, data: data, response: response, error: error, completionHandler: completionHandler)
         }
         
         task.resume()
         
         return task
+    }
+    
+    // HTTP PUT request
+    func update(urlString:String, parameters: [String:AnyObject], headers: [String:AnyObject]?, completionHandler: CompletionHandlerType) -> NSURLSessionDataTask {
+        
+        let url = NSURL(string: urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.HTTPMethod = "PUT"
+        
+        if let headers = headers {
+            for (key,value) in headers {
+                request.setValue(value as? String, forHTTPHeaderField: key)
+            }
+        }
+        
+        if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
+            request.HTTPBody = jsonData
+        } else {
+            print("error sending params as JSON, params: \(parameters)")
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            self.handleResponse(request, data: data, response: response, error: error, completionHandler: completionHandler)
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
+    // Response handler, parses JSON response, checks status code, and calls the completion handler
+    private func handleResponse(request:NSURLRequest, data:NSData?, response:NSURLResponse?, error:NSError?, completionHandler:CompletionHandlerType) -> Void {
+    
+        guard (error == nil) else {
+            completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(error)"])))
+            return
+        }
+        
+        guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            var errorString = ""
+            if let response = response as? NSHTTPURLResponse {
+                errorString = "Your request returned an invalid response! Status code: \(response.statusCode)!"
+            } else if let response = response {
+                errorString = "Your request returned an invalid response! Response: \(response)!"
+            } else {
+                errorString = "Your request returned an invalid response!"
+            }
+            
+            completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(errorString)"])))
+            return
+        }
+        
+        guard var data = data else {
+            completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
+            return
+        }
+        
+        // Udacity responses send an extra 5 bytes of data that we do not need.
+        if request.URL!.host == OTMClient.UdacityAPI.UdacityURL {
+            data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+        }
+        
+        OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+        
     }
     
     class func parseJSONWithCompletionHandler(data: NSData, completionHandler: CompletionHandlerType) {

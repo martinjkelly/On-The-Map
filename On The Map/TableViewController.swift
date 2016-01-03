@@ -29,9 +29,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: Methods
     func loadStudentLocations(freshData:Bool) {
-        print("loading student locations, with freshData: \(freshData)")
         
         showActivityIndicator()
+        
+        self.locations.removeAll()
         
         studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
@@ -53,7 +54,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: Actions
     @IBAction func reloadDataButtonPressed(sender: UIBarButtonItem) {
-        self.locations.removeAll()
         loadStudentLocations(true)
     }
 }

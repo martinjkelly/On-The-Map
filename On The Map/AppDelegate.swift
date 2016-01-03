@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func hideActivityIndicator() {
         if activityIndicator != nil {
             activityIndicator!.stopAnimating()
+            activityIndicator!.removeFromSuperview()
             activityIndicator = nil
         }
     }
