@@ -23,9 +23,15 @@ class UdacityClient: OTMClient {
         return Singleton.sharedInstance
     }
     
-    func login(username:String, password:String, completionHandler:(success:Bool) -> Void) {
+    func login(username:String?, password:String?, token:String?, completionHandler:(success:Bool) -> Void) {
         
-        let parameters = ["udacity": ["username": username, "password": password]]
+        var parameters: [String:AnyObject]
+        
+        if token != nil {
+            parameters = ["facebook_mobile": ["access_token": token!]]
+        } else {
+            parameters = ["udacity": ["username": username!, "password": password!]]
+        }
         
         OTMClient.sharedInstance().send(OTMClient.UdacityAPI.AuthorizationURL, parameters: parameters, headers: nil) { (result:OTMClient.Result) in
             
@@ -95,6 +101,12 @@ class UdacityClient: OTMClient {
                 self.user = nil
                 self.sessionId = nil
                 self.userId = nil
+                
+                if (FBSDKAccessToken.currentAccessToken() != nil) {
+                    let loginManager = FBSDKLoginManager()
+                    loginManager.logOut()
+                }
+                
                 completionHandler(success: true)
                 break
             }

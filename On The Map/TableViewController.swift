@@ -42,7 +42,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
+                    self.showQuickAlert("Unable to download locations", message: "No locations were found, please check your network connection")
                 }
             }
             

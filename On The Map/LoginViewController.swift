@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var fbLoginButton:FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,7 @@ class LoginViewController: UIViewController {
         usernameField.attributedPlaceholder = NSAttributedString(string: usernameField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
         
-        // @TODO: sort the rest of this later.
-        let fbLoginButton = FBSDKLoginButton()
-        fbLoginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height - 50)
-        view.addSubview(fbLoginButton)
-        
+        checkFacebookLoggedIn()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,34 +38,64 @@ class LoginViewController: UIViewController {
     
     }
     
+    func checkFacebookLoggedIn() {
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+            showActivityIndicator()
+            UdacityClient.sharedInstance().login(nil, password: nil, token: FBSDKAccessToken.currentAccessToken().tokenString) { (success) in
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                    self.hideActivityIndicator()
+                    
+                    if (success) {
+                        self.startApplication()
+                    } else {
+                        self.showQuickAlert("Invalid Credentials", message: "The login details provided are not valid.")
+                    }
+                }
+                
+            }
+        }
+        else
+        {
+            fbLoginButton = FBSDKLoginButton()
+            fbLoginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height - 50)
+            fbLoginButton.delegate = self
+            view.addSubview(fbLoginButton)
+        }
+    }
+    
+    func startApplication() {
+        let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
+        
+        let initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController")
+        appDelegate.window?.rootViewController = initialViewController
+        appDelegate.window?.makeKeyAndVisible()
+    }
+    
     // MARK: Actions
     @IBAction func loginButton(sender: UIButton) {
         
         if (usernameField.text!.isEmpty || passwordField.text!.isEmpty) {
-            showErrorAlert("Missing credentials", message: "Please enter your username and password to login")
+            showQuickAlert("Missing credentials", message: "Please enter your username and password to login")
             return
         }
         
         showActivityIndicator()
-        UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!) { (success) in
-            
-            if (success) {
-                dispatch_async(dispatch_get_main_queue()) {
-                    let appDelegate = UIApplication.sharedApplication().delegate! as! AppDelegate
-            
-                    let initialViewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBarController")
-                    appDelegate.window?.rootViewController = initialViewController
-                    appDelegate.window?.makeKeyAndVisible()
-                }
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showErrorAlert("Invalid Credentials", message: "The login details provided are not valid.")
-                }
-            }
+        UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!, token: nil) { (success) in
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.hideActivityIndicator()
+                
+                if (success) {
+                    self.startApplication()
+                } else {
+                    self.showQuickAlert("Invalid Credentials", message: "The login details provided are not valid.")
+                }
             }
+            
         }
     }
     
@@ -81,15 +108,24 @@ class LoginViewController: UIViewController {
 
 }
 
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        checkFacebookLoggedIn()
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        // don't actually need to do anything here, but method needs to be here to conform to protocol.
+    }
+}
+
 extension UIViewController {
     
     // Show a quick alert error message
-    func showErrorAlert(title:String, message:String) {
+    func showQuickAlert(title:String, message:String) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        presentViewController(alertView, animated: true, completion: nil)
+        alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
     
     func showActivityIndicator() {

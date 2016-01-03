@@ -83,10 +83,16 @@ class InformationPostingViewController:UIViewController
     // MARK: Actions
     @IBAction func submitButtonPressed(sender: UIButton) {
         
+        if (linkTextField.text == "") {
+            showQuickAlert("Invalid link", message: "Please enter a valid URL in the blue section above before submitting.")
+            return
+        }
+        
         ParseClient.sharedInstance().submitStudentLocation(selectedPlacemark!, locationString: locationTextField.text!, linkString: linkTextField.text!) { (success:Bool) in
             
             StudentLocations.sharedInstance().getStudentLocations(true, completion: { (success:Bool, locations: [StudentLocation]?) in
                 dispatch_async(dispatch_get_main_queue()) {
+                    self.showQuickAlert("Success", message: "Your location and link were successfully posted")
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
             })
@@ -95,13 +101,26 @@ class InformationPostingViewController:UIViewController
     
     @IBAction func findButtonPressed(sender: UIButton) {
         
+        showActivityIndicator()
         geocoder.geocodeAddressString(locationTextField.text!) { (placemarks:[CLPlacemark]?, error:NSError?) in
             
-            if let location = placemarks?.first {
-                self.selectedPlacemark = location
+            if let _ = error {
+                
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.switchView()
+                    self.hideActivityIndicator()
+                    self.showQuickAlert("Unable to find location", message: "We were unable to find a location based on your input, please try again.");
                 }
+                
+            } else {
+            
+                if let location = placemarks?.first {
+                    self.selectedPlacemark = location
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.hideActivityIndicator()
+                        self.switchView()
+                    }
+                }
+                
             }
         }
     }

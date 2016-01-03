@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.showErrorAlert("Unable to download locations", message: "No locations were found, please check your network connection")
+                    self.showQuickAlert("Unable to download locations", message: "No locations were found, please check your network connection")
                 }
             }
             
@@ -103,7 +103,7 @@ extension MapViewController {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         guard let urlString = (view.annotation?.subtitle)! else {
-            self.showErrorAlert("Invalid URL", message: "The provided link was invalid or missing")
+            self.showQuickAlert("Invalid URL", message: "The provided link was invalid or missing")
             return
         }
         

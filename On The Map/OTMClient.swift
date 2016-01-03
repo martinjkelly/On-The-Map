@@ -67,36 +67,7 @@ class OTMClient: NSObject {
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-            guard (error == nil) else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(error)"])))
-                return
-            }
-            
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                var errorString = ""
-                if let response = response as? NSHTTPURLResponse {
-                    errorString = "Your request returned an invalid response! Status code: \(response.statusCode)!"
-                } else if let response = response {
-                    errorString = "Your request returned an invalid response! Response: \(response)!"
-                } else {
-                    errorString = "Your request returned an invalid response!"
-                }
-                
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request error: \(errorString)"])))
-                return
-            }
-            
-            guard var data = data else {
-                completionHandler(Result.Failure(NSError(domain: "OTMClient:fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data returned from request"])))
-                return
-            }
-            
-            // Udacity responses send an extra 5 bytes of data that we do not need.
-            if url!.host == OTMClient.UdacityAPI.UdacityURL {
-                data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            }
-            
-            OTMClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            self.handleResponse(request, data: data, response: response, error: error, completionHandler: completionHandler)
 
         }
         
@@ -120,6 +91,7 @@ class OTMClient: NSObject {
         }
         
         if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
+            print(try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments))
             request.HTTPBody = jsonData
         } else {
             print("error sending params as JSON, params: \(parameters)")
@@ -150,6 +122,7 @@ class OTMClient: NSObject {
         }
         
         if let jsonData = try? NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted) {
+            print(try! NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments))
             request.HTTPBody = jsonData
         } else {
             print("error sending params as JSON, params: \(parameters)")

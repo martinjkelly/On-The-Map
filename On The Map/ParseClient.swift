@@ -105,8 +105,8 @@ class ParseClient: OTMClient
                     "lastName": user.lastName,
                     "mapString": locationString,
                     "mediaURL": linkString,
-                    "latitude": Float((location.location?.coordinate.latitude)!),
-                    "longitude": Float((location.location?.coordinate.longitude)!)
+                    "latitude": (location.location?.coordinate.latitude)!,
+                    "longitude": (location.location?.coordinate.longitude)!
                 ]
                 
                 if success {
