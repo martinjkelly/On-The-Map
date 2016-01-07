@@ -108,12 +108,15 @@ class InformationPostingViewController:UIViewController
     @IBAction func findButtonPressed(sender: UIButton) {
         
         showActivityIndicator()
+        self.view.alpha = 0.5
         geocoder.geocodeAddressString(locationTextField.text!) { (placemarks:[CLPlacemark]?, error:NSError?) in
+            
+            self.view.alpha = 1.0
+            self.hideActivityIndicator()
             
             if let _ = error {
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.hideActivityIndicator()
                     self.showQuickAlert("Unable to find location", message: "We were unable to find a location based on your input, please try again.");
                 }
                 
@@ -122,7 +125,6 @@ class InformationPostingViewController:UIViewController
                 if let location = placemarks?.first {
                     self.selectedPlacemark = location
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.hideActivityIndicator()
                         self.switchView()
                     }
                 }
