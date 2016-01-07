@@ -38,6 +38,9 @@ class InformationPostingViewController:UIViewController
         locationTextField.delegate = self
         linkTextField.delegate = self
         
+        locationTextField.attributedPlaceholder = NSAttributedString(string: locationTextField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        linkTextField.attributedPlaceholder = NSAttributedString(string: linkTextField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
         loadCurrentStep()
     }
     
@@ -96,7 +99,6 @@ class InformationPostingViewController:UIViewController
             
             StudentLocations.sharedInstance().getStudentLocations(true, completion: { (success:Bool, locations: [StudentLocation]?) in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.showQuickAlert("Success", message: "Your location and link were successfully posted")
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
             })

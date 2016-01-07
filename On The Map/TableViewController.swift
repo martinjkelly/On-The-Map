@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
     let studentLocations = StudentLocations.sharedInstance()
@@ -71,9 +71,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 }
 
-extension TableViewController {
+extension TableViewController:UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: TableViewDelegate
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -87,10 +90,11 @@ extension TableViewController {
         if let link = studentLocation.mediaUrl {
             cell.detailTextLabel?.text = "\(link)"
         }
+        cell.imageView?.image = UIImage(named: "pin")
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let studentLocation = locations[indexPath.row]
         if let link = studentLocation.mediaUrl {
             UIApplication.sharedApplication().openURL(link)

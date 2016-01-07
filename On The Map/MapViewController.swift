@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     let studentLocations = StudentLocations.sharedInstance()
@@ -77,7 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
 }
 
-extension MapViewController {
+extension MapViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
