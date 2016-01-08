@@ -23,7 +23,7 @@ class UdacityClient: OTMClient {
         return Singleton.sharedInstance
     }
     
-    func login(username:String?, password:String?, token:String?, completionHandler:(success:Bool) -> Void) {
+    func login(username:String?, password:String?, token:String?, completionHandler:(success:Bool, errorDescription:String?) -> Void) {
         
         var parameters: [String:AnyObject]
         
@@ -38,7 +38,7 @@ class UdacityClient: OTMClient {
             switch result {
             case .Failure(let error):
                 print("login failed with error: \(error)")
-                completionHandler(success: false)
+                completionHandler(success: false, errorDescription: (error.userInfo[NSLocalizedDescriptionKey] as! String))
                 break
             case .Success(let res):
                 let account = res!["account"] as? [String:AnyObject]
@@ -51,9 +51,9 @@ class UdacityClient: OTMClient {
                     
                     if success {
                         self.user = User(dict: userDict!)
-                        completionHandler(success: true)
+                        completionHandler(success: true, errorDescription: nil)
                     } else {
-                        completionHandler(success: false)
+                        completionHandler(success: false, errorDescription: "Failed to get user information.")
                     }
                 }
                 break

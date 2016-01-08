@@ -98,8 +98,17 @@ class InformationPostingViewController:UIViewController
         ParseClient.sharedInstance().submitStudentLocation(selectedPlacemark!, locationString: locationTextField.text!, linkString: linkTextField.text!) { (success:Bool) in
             
             StudentLocations.sharedInstance().getStudentLocations(true, completion: { (success:Bool, locations: [StudentLocation]?) in
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showQuickAlert("Success", message: "Your location and link were successfully posted")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showQuickAlert("Error", message: "An error occurred posting your location, Please try again.")
+                        self.switchView()
+                    }
                 }
             })
         }

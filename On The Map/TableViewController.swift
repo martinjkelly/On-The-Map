@@ -11,7 +11,6 @@ import UIKit
 class TableViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
-    let studentLocations = StudentLocations.sharedInstance()
     var locations = [StudentLocation]()
     
     override func viewDidLoad() {
@@ -34,9 +33,9 @@ class TableViewController: UIViewController  {
         
         self.locations.removeAll()
         
-        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
+        StudentLocations.sharedInstance().getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
-                self.locations = locations!
+                self.locations = StudentLocations.sharedInstance().locations
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
@@ -85,7 +84,7 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
         
-        let studentLocation = locations[indexPath.row]
+        let studentLocation = StudentLocations.sharedInstance().locations[indexPath.row]
         cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
         if let link = studentLocation.mediaUrl {
             cell.detailTextLabel?.text = "\(link)"
@@ -94,8 +93,8 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentLocation = locations[indexPath.row]
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let studentLocation = StudentLocations.sharedInstance().locations[indexPath.row]
         if let link = studentLocation.mediaUrl {
             UIApplication.sharedApplication().openURL(link)
         }

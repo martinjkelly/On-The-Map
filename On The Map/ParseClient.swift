@@ -20,7 +20,7 @@ class ParseClient: OTMClient
         return Singleton.sharedInstance
     }
     
-    func getStudentLocations(limit:Int = 100, offset:Int = 0, orderBy:String = "-createdAt", completionHandler: (success:Bool, students: [StudentLocation]?) -> Void) {
+    func getStudentLocations(limit:Int = 100, offset:Int = 0, orderBy:String = "-updatedAt", completionHandler: (success:Bool, students: [StudentLocation]?) -> Void) {
         
         let parameters = [
             "limit": limit,

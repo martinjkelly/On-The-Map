@@ -12,7 +12,6 @@ import MapKit
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    let studentLocations = StudentLocations.sharedInstance()
     var currentAnnotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
@@ -33,9 +32,9 @@ class MapViewController: UIViewController {
         mapView.removeAnnotations(currentAnnotations)
         currentAnnotations.removeAll()
         
-        studentLocations.getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
+        StudentLocations.sharedInstance().getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
-                for location in locations! {
+                for location in StudentLocations.sharedInstance().locations {
                     self.currentAnnotations.append(location.annotation)
                 }
 

@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         {
             // User is already logged in, do work such as go to next view controller.
             showActivityIndicator()
-            UdacityClient.sharedInstance().login(nil, password: nil, token: FBSDKAccessToken.currentAccessToken().tokenString) { (success) in
+            UdacityClient.sharedInstance().login(nil, password: nil, token: FBSDKAccessToken.currentAccessToken().tokenString) { (success:Bool, errorDescription:String?) in
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                     if (success) {
                         self.startApplication()
                     } else {
-                        self.showQuickAlert("Invalid Credentials", message: "The login details provided are not valid.")
+                        self.showQuickAlert("An error occurred", message: errorDescription!)
                     }
                 }
                 
@@ -86,7 +86,7 @@ class LoginViewController: UIViewController {
         }
         
         showActivityIndicator()
-        UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!, token: nil) { (success) in
+        UdacityClient.sharedInstance().login(usernameField.text!, password: passwordField.text!, token: nil) { (success:Bool, errorDescription:String?) in
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.hideActivityIndicator()
@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
                 if (success) {
                     self.startApplication()
                 } else {
-                    self.showQuickAlert("Invalid Credentials", message: "The login details provided are not valid.")
+                    self.showQuickAlert("An error occurred", message: errorDescription!)
                 }
             }
             
