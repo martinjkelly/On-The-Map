@@ -27,5 +27,6 @@ extension OTMClient {
         static let blueColor = UIColor(red: 81/255, green: 137/255, blue: 180/255, alpha: 1.0)
         static let darKBlueColor = UIColor(red: 16/255, green: 63/255, blue: 112/255, alpha: 1.0)
         static let greyColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
+        static let tableAlternateRowBgColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.5)
     }
 }

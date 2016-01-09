@@ -11,7 +11,6 @@ import UIKit
 class TableViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
-    var locations = [StudentLocation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +30,8 @@ class TableViewController: UIViewController  {
         
         showActivityIndicator()
         
-        self.locations.removeAll()
-        
         StudentLocations.sharedInstance().getStudentLocations(freshData, completion: { (success:Bool, locations: [StudentLocation]?) in
             if (success) {
-                self.locations = StudentLocations.sharedInstance().locations
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
@@ -77,7 +73,7 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return StudentLocations.sharedInstance().locations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -90,7 +86,39 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
             cell.detailTextLabel?.text = "\(link)"
             cell.detailTextLabel?.textColor = UIColor.grayColor()
         }
-        cell.imageView?.image = UIImage(named: "pin")
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = OTMClient.CustomColors.tableAlternateRowBgColor
+        }
+        
+        // default placeholder image
+        cell.imageView?.image = UIImage(named:"pin")
+        
+        if let accountID = studentLocation.uniqueKey {
+            if let imageUrl = NSURL(string: "https://robohash.org/udacity-\(accountID).png") {
+                if let data = NSData(contentsOfURL: imageUrl) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let currentCell = self.tableView.cellForRowAtIndexPath(indexPath)
+                        currentCell!.imageView?.image = UIImage(data: data)
+                    }
+                }
+            }
+        }
+        
+        if let accountID = studentLocation.uniqueKey {
+            if let imageUrl = NSURL(string: "https://robohash.org/udacity-\(accountID).png") {
+                let task = NSURLSession.sharedSession().dataTaskWithURL(imageUrl) { (data, response, error) in
+                    if data != nil {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            let currentCell = self.tableView.cellForRowAtIndexPath(indexPath)
+                            currentCell!.imageView?.image = UIImage(data: data!)
+                        }
+                    }
+                }
+                
+                task.resume()
+            }
+        }
+        
         return cell
     }
     
