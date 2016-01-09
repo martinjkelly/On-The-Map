@@ -88,12 +88,13 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
         if let link = studentLocation.mediaUrl {
             cell.detailTextLabel?.text = "\(link)"
+            cell.detailTextLabel?.textColor = UIColor.grayColor()
         }
         cell.imageView?.image = UIImage(named: "pin")
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let studentLocation = StudentLocations.sharedInstance().locations[indexPath.row]
         if let link = studentLocation.mediaUrl {
             UIApplication.sharedApplication().openURL(link)
