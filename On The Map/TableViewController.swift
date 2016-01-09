@@ -86,8 +86,12 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
             cell.detailTextLabel?.text = "\(link)"
             cell.detailTextLabel?.textColor = UIColor.grayColor()
         }
+        
+        // alternate row colors
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = OTMClient.CustomColors.tableAlternateRowBgColor
+        } else {
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         // default placeholder image
@@ -109,8 +113,9 @@ extension TableViewController:UITableViewDelegate, UITableViewDataSource {
                 let task = NSURLSession.sharedSession().dataTaskWithURL(imageUrl) { (data, response, error) in
                     if data != nil {
                         dispatch_async(dispatch_get_main_queue()) {
-                            let currentCell = self.tableView.cellForRowAtIndexPath(indexPath)
-                            currentCell!.imageView?.image = UIImage(data: data!)
+                            if let currentCell = self.tableView.cellForRowAtIndexPath(indexPath) {
+                                currentCell.imageView?.image = UIImage(data: data!)
+                            }
                         }
                     }
                 }
